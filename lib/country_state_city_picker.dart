@@ -50,7 +50,8 @@ class _SelectStateState extends State<SelectState> {
 
   @override
   void initState() {
-    getCounty();
+    getState('🇵🇰    Pakistan');
+
     super.initState();
   }
 
@@ -75,11 +76,11 @@ class _SelectStateState extends State<SelectState> {
     return _country;
   }
 
-  Future getState() async {
+  Future getState(String value) async {
     var response = await getResponse();
     var takestate = response
         .map((map) => StatusModel.StatusModel.fromJson(map))
-        .where((item) => item.emoji + "    " + item.name == _selectedCountry)
+        .where((item) => item.emoji + "    " + item.name == value)
         .map((item) => item.state)
         .toList();
     var states = takestate as List;
