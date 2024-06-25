@@ -43,7 +43,7 @@ class _SelectStateState extends State<SelectState> {
   List<String> _cities = ["Choose City"];
   List<String> _country = ["Choose Country"];
   String _selectedCity = "Choose City";
-  String _selectedCountry = "Pakistan";
+  String _selectedCountry = "select Country";
   String _selectedState = "Choose State/Province";
   List<String> _states = ["Choose State/Province"];
   var responses;
@@ -124,16 +124,16 @@ class _SelectStateState extends State<SelectState> {
     return _cities;
   }
 
-  // void _onSelectedCountry(String value) {
-  //   if (!mounted) return;
-  //   setState(() {
-  //     _selectedState = "Choose  State/Province";
-  //     _states = ["Choose  State/Province"];
-  //     _selectedCountry = value;
-  //     this.widget.onCountryChanged(value);
-  //     getState();
-  //   });
-  // }
+  void _onSelectedCountry(String value) {
+    if (!mounted) return;
+    setState(() {
+      _selectedState = "Choose  State/Province";
+      _states = ["Choose  State/Province"];
+      _selectedCountry = value;
+      this.widget.onCountryChanged!(value);
+      getState();
+    });
+  }
 
   void _onSelectedState(String value) {
     if (!mounted) return;
@@ -159,46 +159,46 @@ class _SelectStateState extends State<SelectState> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // DropdownSearch<String>(
-        //   items: _country,
-        //   dropdownBuilder: (context, selectedItem) {
-        //     return Container(
-        //         child: selectedItem != null
-        //             ? Text(
-        //                 selectedItem,
-        //                 style: TextStyle(
-        //                   color: Color(0xff0F1031),
-        //                   fontSize: 11,
-        //                 ),
-        //               )
-        //             : null);
-        //   },
-        //   popupProps: PopupProps.menu(
-        //     disabledItemFn: (value) => value == "Choose Country",
-        //     showSearchBox: true,
-        //     searchFieldProps: TextFieldProps(autofocus: true),
-        //     // showSelectedItems: true,
-        //   ),
-        //   dropdownDecoratorProps: DropDownDecoratorProps(
-        //     dropdownSearchDecoration: InputDecoration(
-        //         labelStyle: TextStyle(color: Colors.grey, fontSize: 11),
-        //         label: Text('Choose Country'),
-        //         contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-        //         border: OutlineInputBorder(
-        //             borderRadius: BorderRadius.all(Radius.circular(10))),
-        //         enabledBorder: OutlineInputBorder(
-        //             borderRadius: BorderRadius.all(Radius.circular(10)),
-        //             borderSide: BorderSide(color: Color(0xffBBC2C9))),
-        //         focusedBorder: OutlineInputBorder(
-        //             borderRadius: BorderRadius.all(Radius.circular(10)),
-        //             borderSide: BorderSide(color: Color(0xff0F1031))),
-        //         floatingLabelBehavior: FloatingLabelBehavior.auto),
-        //   ),
-        // //  onChanged: (value) => _onSelectedCountry(value!),
-        // ),
-        // SizedBox(
-        //   height: widget.spacing,
-        // ),
+        DropdownSearch<String>(
+          items: _country,
+          dropdownBuilder: (context, selectedItem) {
+            return Container(
+                child: selectedItem != null
+                    ? Text(
+                        selectedItem,
+                        style: TextStyle(
+                          color: Color(0xff0F1031),
+                          fontSize: 11,
+                        ),
+                      )
+                    : null);
+          },
+          popupProps: PopupProps.menu(
+            disabledItemFn: (value) => value == "Choose Country",
+            showSearchBox: true,
+            searchFieldProps: TextFieldProps(autofocus: true),
+            // showSelectedItems: true,
+          ),
+          dropdownDecoratorProps: DropDownDecoratorProps(
+            dropdownSearchDecoration: InputDecoration(
+                labelStyle: TextStyle(color: Colors.grey, fontSize: 11),
+                label: Text('Choose Country'),
+                contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(color: Color(0xffBBC2C9))),
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(color: Color(0xff0F1031))),
+                floatingLabelBehavior: FloatingLabelBehavior.auto),
+          ),
+          onChanged: (value) => _onSelectedCountry(value!),
+        ),
+        SizedBox(
+          height: widget.spacing,
+        ),
         DropdownSearch<String>(
           items: _states,
           dropdownBuilder: (context, selectedItem) {
