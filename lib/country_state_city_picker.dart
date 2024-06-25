@@ -129,6 +129,7 @@ class _SelectStateState extends State<SelectState> {
     setState(() {
       _selectedState = "Choose  State/Province";
       _states = ["Choose  State/Province"];
+      print('country value $value');
       _selectedCountry = value;
       this.widget.onCountryChanged!(value);
       getState();
