@@ -2,13 +2,14 @@ library country_state_city_picker_nona;
 
 import 'dart:convert';
 
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:dropdown_search/dropdown_search.dart';
+
 import 'model/select_status_model.dart' as StatusModel;
 
 class SelectState extends StatefulWidget {
-  final ValueChanged<String> onCountryChanged;
+  final ValueChanged<String>? onCountryChanged;
   final ValueChanged<String> onStateChanged;
   final ValueChanged<String> onCityChanged;
   final VoidCallback? onCountryTap;
@@ -21,7 +22,7 @@ class SelectState extends StatefulWidget {
 
   const SelectState(
       {Key? key,
-      required this.onCountryChanged,
+      this.onCountryChanged,
       required this.onStateChanged,
       required this.onCityChanged,
       this.decoration =
@@ -42,7 +43,7 @@ class _SelectStateState extends State<SelectState> {
   List<String> _cities = ["Choose City"];
   List<String> _country = ["Choose Country"];
   String _selectedCity = "Choose City";
-  String _selectedCountry = "Choose Country";
+  String _selectedCountry = "Pakistan";
   String _selectedState = "Choose State/Province";
   List<String> _states = ["Choose State/Province"];
   var responses;
