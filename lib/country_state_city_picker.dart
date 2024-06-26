@@ -128,7 +128,6 @@ class _SelectStateState extends State<SelectState> {
         });
       });
     });
-    print('bbbbbbbbb$_cities');
     return _cities;
   }
 
@@ -255,7 +254,7 @@ class _SelectStateState extends State<SelectState> {
                         selectedItem,
                         style: TextStyle(
                           color: Color(0xff0F1031),
-                          fontSize: 14,
+                          fontSize: 11,
                         ),
                       )
                     : null);
@@ -268,15 +267,17 @@ class _SelectStateState extends State<SelectState> {
           ),
           dropdownDecoratorProps: DropDownDecoratorProps(
             dropdownSearchDecoration: InputDecoration(
-                contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                labelStyle: TextStyle(color: Colors.grey, fontSize: 11),
+                label: Text('Choose City'),
+                contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(color: widget.boaderColor!)),
+                    borderSide: BorderSide(color: Color(0xffBBC2C9))),
                 focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(10)),
-                    borderSide: BorderSide(color: widget.boaderColor!)),
+                    borderSide: BorderSide(color: Color(0xff0F1031))),
                 floatingLabelBehavior: FloatingLabelBehavior.auto),
           ),
           onChanged: (value) => _onSelectedCity(value!),
