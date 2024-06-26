@@ -128,6 +128,7 @@ class _SelectStateState extends State<SelectState> {
         });
       });
     });
+    print('bbbbbbbbb$_cities');
     return _cities;
   }
 
@@ -251,7 +252,7 @@ class _SelectStateState extends State<SelectState> {
             return Container(
                 child: selectedItem != null
                     ? Text(
-                        selectedItem ?? 'Choose City',
+                        selectedItem,
                         style: TextStyle(
                           color: Color(0xff0F1031),
                           fontSize: 14,
